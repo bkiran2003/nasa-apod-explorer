@@ -88,7 +88,7 @@ POJOs for mapping NASA API JSON responses.
 
 All configuration is handled in `application.properties`:
 
-```properties
+properties
 nasa.api.key=YOUR_NASA_API_KEY
 cache.max-size=100
 cache.expire-minutes=10
