@@ -126,6 +126,4 @@ B Kiran
 🌐 Portfolio: https://b-kiran.medicomforts.com
 
 
----
 
-If you want, I can **add badges**, **add icons**, **add a table of contents**, or **convert this into a more premium “GitHub Pro-style README”**.
