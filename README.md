@@ -1,166 +1,131 @@
-🚀 NASA APOD Explorer – Spring Boot Full Stack Project
+# 🚀 NASA APOD Explorer - Spring Boot Full Stack Project
 
-This is a Java Spring Boot Full Stack Project developed as part of the Engineering Team interview process for Finfactor Technologies.
-The project titled NASA APOD Explorer is a high-performance, API-driven application that fetches and displays NASA’s Astronomy Picture of the Day with modern caching, secure API handling, and a futuristic UI.
+This is a **Java Full Stack Interview Project** developed as part of the hiring process for the Engineering Team at **Finfactor Technologies Pvt. Ltd.**  
+The project titled **NASA APOD Explorer** is a web-based application for exploring the cosmos using NASA's public APIs, featuring caching, secure API handling, and a futuristic glassmorphism UI.
 
-🌌 Project Overview
+🔗 **GitHub Repository:** https://github.com/bkiran2003/nasa-apod-explorer
 
-The NASA APOD Explorer allows users to:
+---
 
-View the Astronomy Picture of the Day (APOD)
+## 🏢 Challenge Details
 
-Explore historical images with date selection
+This project was built by **Mr. B Kiran** for the coding challenge for the **Software Engineer (Java)** role at **Finfactor Technologies**.
 
-Browse a responsive gallery of recent images
+The challenge required building:
 
-Read NASA-provided scientific explanations
+- A **RESTful Web Service**
+- A **Frontend Layer**
+- A connection to NASA's *Astronomy Picture of the Day (APOD)* API
 
-Enjoy a smooth, space-themed animated UI
+With emphasis on:
 
-It demonstrates clean architecture, secure configuration, caching optimization, and production-ready engineering practices.
+- ⚡ **Performance:** Use caching to optimize API usage  
+- 🔐 **Security:** Safe API key management  
+- 🎨 **User Experience:** Modern, responsive, animated UI  
 
-✨ Key Features
+---
 
-🔐 Secure API Key Handling
-No hardcoded secrets — keys injected via application.properties or environment variables.
+## 🧑‍💻 Project Overview
 
-⚡ High-Performance Caching (Caffeine Cache)
-Reduces NASA API calls and speeds up repeat requests instantly.
+The **NASA APOD Explorer** is a full-stack application that enables users to:
 
-🛰️ APOD Retrieval for Any Date
-Users can choose any date since 1995.
+- View NASA’s “Astronomy Picture of the Day”
+- Explore pictures from any past date
+- Browse a gallery of recent space images
+- Read NASA’s scientific explanation for each APOD
 
-🎞️ 10-Day Gallery View
-Auto-fetches recent APOD history.
+Designed to be both **production-ready** and **visually immersive**.
 
-🎨 Glassmorphism UI + CSS Starfield Animation
-Space-themed immersive interface.
+---
 
-📱 Fully Responsive Frontend
-Compatible with mobile, tablet, and desktop.
+## 📌 Key Features
 
-🛡️ Resilient Error Handling
-Friendly fallback UI when external APIs fail.
+- 🌌 **Daily Astronomy Picture** – View high-resolution images & descriptions  
+- 📅 **Date Picker Navigation** – Explore APODs from any date since 1995  
+- 🖼️ **Recent Gallery** – Auto-fetches the last 10 days of space images  
+- ⚡ **High-Performance Caching** – Caffeine Cache (10 min expiry) for instant loads  
+- 🎨 **Glassmorphism UI** – CSS-only starfield animations + cosmic theme  
+- 📱 **Fully Responsive** – Optimized for desktop, tablet & mobile  
 
-🧰 Tech Stack Used
-🖥️ Frontend
+---
 
-HTML5
+## 🧰 Tech Stack Used
 
-CSS3 (Glassmorphism + Starfield Animation)
+### 🖥️ Frontend
+- HTML5  
+- CSS3 (Animations + Glassmorphism)  
+- JavaScript (Vanilla ES6+)  
 
-Vanilla JavaScript
+### 💻 Backend
+- Java 17  
+- Spring Boot 3  
+- Spring Web  
+- Spring Caching  
+- Caffeine Cache  
+- Maven (Build Tool)  
 
-💻 Backend
+---
 
-Java 17
+## 🏗️ Architecture & Best Practices
 
-Spring Boot 3
+The application follows a **Controller → Service → Model** pattern.
 
-Spring Web (REST APIs)
+### **Controller Layer**
+Handles incoming HTTP requests and routes them to services.
 
-Caffeine Cache (In-memory caching)
+### **Service Layer**
+Contains the main business logic:
+- NASA API calls  
+- Caching strategy  
+- Error handling  
 
-🗄️ Database
+### **Model Layer**
+POJOs for mapping NASA API JSON responses.
 
-Not required (NASA API-driven system)
-
-🧱 Architecture
-
-The system follows a clean layered structure:
-
-Controller Layer – Handles REST endpoints
-
-Service Layer – API communication + caching + error handling
-
-Model Layer – DTOs for mapping NASA API responses
-
-Config Layer – API config + Caffeine cache config
-
-Advantages:
-
-Easy to extend (e.g., add NASA Mars Rover API)
-
-Maintains scalability and clean code separation
-
-🗂️ Configuration (application.properties)
-# secure: do not commit your real key to git
+### **Configuration**
+`application.properties` controls API keys & cache settings:
+```properties
 nasa.api.key=YOUR_NASA_API_KEY
-
-# optional cache config overrides
 cache.max-size=100
 cache.expire-minutes=10
+📷 Snapshots
 
-🧪 Performance Optimization
+Below are example static screenshots of the application.
 
-The NASA API has strict rate limits.
-To solve this:
-
-⚡ Caffeine Cache Policy
-
-Max Size: 100 items
-
-Expiry: 10 minutes
-
-Hit Time: ~0ms (RAM level)
-
-This ensures:
-
-Faster response times
-
-Fewer NASA API calls
-
-Reliability even under network delays
-
-📁 Project Structure
-nasa-apod-explorer/
-├── src/
-│   ├── main/
-│   │   ├── java/com/nasa/apod/
-│   │   │   ├── controller/
-│   │   │   ├── service/
-│   │   │   ├── model/
-│   │   │   ├── config/
-│   │   │   └── exception/
-│   │   └── resources/
-│   │       ├── static/ (HTML, CSS, JS)
-│   │       └── application.properties
-├── pom.xml
-└── README.md
-
-🚀 How to Run the Project
+🟢 Dashboard & Hero Section
+<img src="screenshots/desktop-view.png" alt="Dashboard View" width="800">
+🟢 Gallery View
+<img src="screenshots/mobile-view.png" alt="Gallery View" width="800">
+🚀 How to Run Locally
 1️⃣ Clone the Repository
 git clone https://github.com/bkiran2003/nasa-apod-explorer.git
 cd nasa-apod-explorer
 
 2️⃣ Add Your NASA API Key
 
-Open src/main/resources/application.properties:
+Open:
+
+src/main/resources/application.properties
+
+
+Add:
 
 nasa.api.key=YOUR_NASA_API_KEY
 
 3️⃣ Run the Application
 mvn spring-boot:run
 
-4️⃣ Open in Browser
+4️⃣ Open Browser
 http://localhost:8080
 
-📷 Screenshots
-
-Note: UI screenshots will be displayed here once uploaded.
-
-🟣 Home Page (APOD View)
-<img src="INSERT_IMAGE_PATH_HERE" width="800">
-🟣 Gallery View
-<img src="INSERT_IMAGE_PATH_HERE" width="800">
-🟣 Details Section
-<img src="INSERT_IMAGE_PATH_HERE" width="800">
-👨‍💻 Author
+👨‍💻 Developer Info
 
 B Kiran
-LinkedIn: linkedin.com/in/kiranshetty23
+🔗 LinkedIn: https://linkedin.com/in/kiranshetty23
 
-Portfolio: b-kiran.medicomforts.com
+🌐 Portfolio: https://b-kiran.medicomforts.com
 
-Developed as part of the Finfactor Technologies Engineering Evaluation
-Focused on clean code, scalability, speed, and real-world API resilience.
+
+---
+
+If you want, I can **add badges**, **add icons**, **add a table of contents**, or **convert this into a more premium “GitHub Pro-style README”**.
