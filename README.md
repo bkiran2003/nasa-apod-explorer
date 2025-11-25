@@ -100,7 +100,7 @@ Below are example static screenshots of the application.
 🟢 Dashboard & Hero Section
 <img src="Screenshot 2025-11-25 142340.png" alt="Dashboard View" width="800">
 🟢 Gallery View
-<img src="screenshots/mobile-view.png" alt="Gallery View" width="800">
+<img src="Screenshot_2025-11-25-13-50-28-821_org.mozilla.firefox.jpg" alt="Gallery View" width="800">
 🚀 How to Run Locally
 1️⃣ Clone the Repository
 git clone https://github.com/bkiran2003/nasa-apod-explorer.git
