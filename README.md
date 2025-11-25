@@ -98,7 +98,7 @@ cache.expire-minutes=10
 Below are example static screenshots of the application.
 
 🟢 Dashboard & Hero Section
-<img src="screenshots/desktop-view.png" alt="Dashboard View" width="800">
+<img src="Screenshot 2025-11-25 142340.png" alt="Dashboard View" width="800">
 🟢 Gallery View
 <img src="screenshots/mobile-view.png" alt="Gallery View" width="800">
 🚀 How to Run Locally
