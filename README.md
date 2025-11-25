@@ -82,12 +82,17 @@ Contains the main business logic:
 ### **Model Layer**
 POJOs for mapping NASA API JSON responses.
 
+---
+
 ### **Configuration**
-`application.properties` controls API keys & cache settings:
+
+All configuration is handled in `application.properties`:
+
 ```properties
 nasa.api.key=YOUR_NASA_API_KEY
 cache.max-size=100
 cache.expire-minutes=10
+
 📷 Snapshots
 
 Below are example static screenshots of the application.
