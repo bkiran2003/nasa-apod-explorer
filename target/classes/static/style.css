@@ -1,0 +1,334 @@
+:root {
+    --primary: #0b3d91; /* NASA Blue — corporate but cute */
+    --accent: #fc3d21;  /* NASA Red — big energy */
+    --glass: rgba(0, 0, 0, 0.6); 
+    --border: rgba(255, 255, 255, 0.1);
+    --text: #ffffff;
+    --text-muted: #a0a0a0;
+    --cyan: #00e0ff; /* footer highlight — icy glow */
+}
+
+/* global housekeeping: box-sizing so layout doesn't freak out */
+* { box-sizing: border-box; }
+
+/* page base: deep space moodboard */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #050505;
+    background: radial-gradient(ellipse at bottom, #0d1321 0%, #000000 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- REALISTIC CSS STARS ---
+   tiny trick: make width/height 1/2/3px so box-shadow creates dots (not blocks).
+   this is the visual sauce that makes the hero feel cosmic.
+*/
+#stars, #stars2, #stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: transparent;
+    z-index: -1;
+}
+
+/* Small Stars (1px) */
+#stars {
+    width: 1px;
+    height: 1px;
+    box-shadow: 10vw 20vh #FFF, 58vw 80vh #FFF, 32vw 12vh #FFF, 90vw 55vh #FFF, 
+                15vw 90vh #FFF, 75vw 15vh #FFF, 45vw 45vh #FFF, 22vw 33vh #FFF,
+                88vw 88vh #FFF, 12vw 60vh #FFF, 60vw 10vh #FFF, 50vw 50vh #FFF,
+                5vw 5vh #FFF, 95vw 95vh #FFF, 40vw 70vh #FFF, 70vw 40vh #FFF;
+    animation: animStar 100s linear infinite;
+}
+#stars:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: 10vw 20vh #FFF, 58vw 80vh #FFF, 32vw 12vh #FFF, 90vw 55vh #FFF, 
+                15vw 90vh #FFF, 75vw 15vh #FFF, 45vw 45vh #FFF, 22vw 33vh #FFF,
+                88vw 88vh #FFF, 12vw 60vh #FFF, 60vw 10vh #FFF, 50vw 50vh #FFF,
+                5vw 5vh #FFF, 95vw 95vh #FFF, 40vw 70vh #FFF, 70vw 40vh #FFF;
+}
+
+/* Medium Stars (2px) */
+#stars2 {
+    width: 2px;
+    height: 2px;
+    box-shadow: 25vw 35vh rgba(255,255,255,0.8), 85vw 10vh rgba(255,255,255,0.8), 
+                40vw 60vh rgba(255,255,255,0.8), 70vw 85vh rgba(255,255,255,0.8),
+                10vw 50vh rgba(255,255,255,0.8), 55vw 25vh rgba(255,255,255,0.8);
+    animation: animStar 150s linear infinite;
+}
+#stars2:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: 25vw 35vh rgba(255,255,255,0.8), 85vw 10vh rgba(255,255,255,0.8), 
+                40vw 60vh rgba(255,255,255,0.8), 70vw 85vh rgba(255,255,255,0.8),
+                10vw 50vh rgba(255,255,255,0.8), 55vw 25vh rgba(255,255,255,0.8);
+}
+
+/* Shooting/Bright Stars (3px) */
+#stars3 {
+    width: 3px;
+    height: 3px;
+    box-shadow: 5vw 90vh #FFF, 95vw 10vh #FFF, 50vw 50vh #FFF;
+    animation: animStar 200s linear infinite;
+}
+#stars3:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: 5vw 90vh #FFF, 95vw 10vh #FFF, 50vw 50vh #FFF;
+}
+
+@keyframes animStar { from { transform: translateY(0px) } to { transform: translateY(-2000px) } }
+
+/* --- Navigation: sticky glass nav --- */
+.glass-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; }
+.nasa-red { color: var(--accent); }
+
+/* controls wrapper */
+.controls { display: flex; gap: 10px; align-items: center; }
+
+/* ====== ENLARGED DATE PICKER (user requested bigger) ======
+   - increased width so it doesn't look tiny on desktop
+   - larger font-size and padding for touch friendliness
+   - subtle rounded corner for friendly UI
+   - keeps color-scheme: dark so the calendar icon remains visible
+*/
+input[type="date"] {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    color: white;
+    padding: 0.75rem 1.25rem;    /* larger click/tap area */
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;         /* bigger text for readability */
+    width: 230px;               /* wider so full date is visible */
+    max-width: 40vw;
+    color-scheme: dark;         /* ensures calendar icon is white on most browsers */
+    transition: box-shadow 0.15s ease, transform 0.12s ease;
+    cursor: pointer;
+}
+
+/* subtle focus ring — accessible and vibey */
+input[type="date"]:focus {
+    outline: none;
+    box-shadow: 0 6px 18px rgba(11,61,145,0.18);
+    transform: translateY(-1px);
+}
+
+/* responsive tweak: on small screens make date picker full width-ish */
+@media (max-width: 480px) {
+    input[type="date"] {
+        width: 100%;
+        max-width: none;
+        padding: 0.85rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* primary CTA (Explore) */
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(252,61,33,0.28); }
+
+/* --- Layout container --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+/* make media responsive and centered */
+.media-container img, .media-container iframe {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+}
+
+/* overlay gradient so text is readable on bright images */
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 3rem 2rem 1rem 2rem;
+    text-align: left;
+}
+
+h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin: 0.5rem 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.badge { background: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-block; }
+.btn-details { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+.btn-details:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+/* --- Glass Cards --- */
+/* glass-card gives that frosted-glass modern look. keep reuse-friendly */
+.glass-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+}
+
+.details-card { 
+    padding: 2rem; 
+    line-height: 1.8; 
+    color: #e0e0e0; 
+    font-size: 1.1rem;
+    position: relative;
+    overflow: visible; 
+}
+/* got rid of weird pseudo-element — cleaner */
+.details-card::after { display: none !important; }
+
+.details-card h3 { font-family: 'Orbitron', sans-serif; margin-top: 0; color: var(--accent); }
+.meta-info { margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 1rem; }
+
+/* --- Gallery --- */
+.gallery-section { margin-top: 4rem; }
+.section-title { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    aspect-ratio: 16/9;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border);
+    background: black;
+}
+
+.gallery-item:hover { transform: translateY(-5px); border-color: var(--accent); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0,0,0,0.8);
+    font-size: 0.8rem;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+.gallery-item:hover .gallery-overlay { transform: translateY(0); }
+
+/* --- Utilities --- */
+.hidden { display: none; }
+.fade-in { animation: fadeIn 0.8s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Loader — small spinner to cue network fetch */
+.loading-container { text-align: center; padding: 4rem; }
+.loader { border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid var(--accent); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 1rem auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Mobile adjustments:
+   keep typographic hierarchy but scale things down so layout stays comfy
+*/
+@media (max-width: 768px) {
+    .hero-overlay h1 { font-size: 1.5rem; }
+    .glass-nav { flex-direction: column; gap: 1rem; align-items: stretch; }
+    .controls { width: 100%; justify-content: center; }
+    .details-card { font-size: 1rem; }
+}
+
+/* --- Footer (developer flex) --- */
+.footer {
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), #000);
+    position: relative;
+    z-index: 10;
+}
+.dev-info {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.highlight { color: var(--cyan); text-shadow: 0 0 10px rgba(0, 224, 255, 0.5); }
+
+/* social links — subtle hover animation for delight */
+.social-links { display: flex; justify-content: center; gap: 2rem; }
+.social-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+}
+.social-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    text-shadow: 0 0 15px rgba(252, 61, 33, 0.6);
+    transform: translateY(-2px);
+}
+
+/* tiny accessibility nudge: focus style on interactive elements */
+button:focus, .social-link:focus, input[type="date"]:focus {
+    outline: 3px solid rgba(0, 224, 255, 0.12);
+    outline-offset: 2px;
+}

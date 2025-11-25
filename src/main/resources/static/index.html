@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA APOD Explorer</title>
+
+    <!--
+        fonts: modern + space vibes
+        (yes this is me being dramatic, but the UI actually benefits)
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BACKGROUND STARS — purely decorative, but makes the hero pop. lowkey obsessed. -->
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <!-- NAVIGATION: glass look for premium vibes -->
+    <nav class="glass-nav">
+        <div class="logo">
+            <span class="nasa-red">NASA</span> APOD
+        </div>
+
+        <div class="controls">
+            <!--
+                IMPORTANT: ID "datePicker" is REQUIRED for JS to hook into.
+                Enlarged and styled for better UX. big and touch-friendly.
+            -->
+            <input type="date" id="datePicker" aria-label="Choose a date for APOD">
+
+            <!-- call fetchApod() to grab APOD for selected date -->
+            <button onclick="fetchApod()" class="btn-primary">
+                Explore
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- LOADING SPINNER (ID "loading" is REQUIRED) -->
+        <div id="loading" class="loading-container hidden">
+            <div class="loader"></div>
+            <p>Retrieving telemetry...</p>
+        </div>
+
+        <!-- MAIN CONTENT (ID "content" is REQUIRED) -->
+        <main id="content" class="hidden fade-in">
+            
+            <!-- HERO SECTION -->
+            <div class="hero-section glass-card">
+                <!-- ID "media-container" is REQUIRED (Image or video goes here) -->
+                <div id="media-container" class="media-container"></div>
+                
+                <div class="hero-overlay">
+                    <!-- ID "date" and "title" are REQUIRED -->
+                    <div class="badge" id="date"></div>
+                    <h1 id="title"></h1>
+                    <button class="btn-details" onclick="scrollToDetails()">Read Analysis ↓</button>
+                </div>
+            </div>
+
+            <!-- DETAILS SECTION -->
+            <div id="details-section" class="content-grid">
+                <div class="details-card glass-card">
+                    <h3>Cosmic Analysis</h3>
+                    <!-- ID "explanation" and "copyright" are REQUIRED -->
+                    <p id="explanation"></p>
+                    <div class="meta-info">
+                        <span id="copyright"></span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- GALLERY SECTION -->
+        <section class="gallery-section">
+            <h2 class="section-title">Gallery View of Recent Images</h2>
+            <!-- ID "gallery" is REQUIRED -->
+            <div id="gallery" class="gallery-grid"></div>
+        </section>
+
+    </div>
+
+    <!-- DEVELOPER FOOTER — shoutout to the dev, flex it a little -->
+    <footer class="footer">
+        <div class="dev-info">
+            Developed by <span class="highlight">B KIRAN</span>
+        </div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/kiranshetty23" target="_blank" class="social-link">LinkedIn Profile</a>
+            <a href="https://www.b-kiran.medicomforts.com/" target="_blank" class="social-link">Portfolio</a>
+        </div>
+    </footer>
+
+    <!-- SCRIPT LINK (MUST BE AT THE END) -->
+    <script src="app.js"></script>
+</body>
+</html>

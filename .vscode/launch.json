@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Spring Boot-NasaApodApplication<nasaapod>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.nasaapod.NasaApodApplication",
+            "projectName": "nasaapod",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
